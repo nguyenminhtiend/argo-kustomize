@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nginx-staging
+  namespace: argocd
+  labels:
+    environment: staging
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/nguyenminhtiend/argo-kustomize.git
+    targetRevision: HEAD
+    path: overlays/staging
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: staging
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
