@@ -27,4 +27,4 @@ configMapGenerator:
 
 replicas:
   - name: nginx-app
-    count: 1
+    count: 2
